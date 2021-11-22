@@ -1,3 +1,14 @@
 node_modules/
 build/
 wrangler.toml
+artifacts/
+cache/
+
+/.idea/
+
+*.iml
+*.env
+*.DS_Store
+coverage/
+coverage.json
+claims/
