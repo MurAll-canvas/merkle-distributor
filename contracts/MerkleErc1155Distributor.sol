@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity =0.6.11;
+pragma solidity =0.8.17;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
-import "@openzeppelin/contracts/token/ERC1155/ERC1155Holder.sol";
-import "@openzeppelin/contracts/cryptography/MerkleProof.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
+import {MerkleProof} from "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import "./interfaces/IMerkleErc1155Distributor.sol";
 
 contract MerkleErc1155Distributor is IMerkleErc1155Distributor, Ownable, ERC1155Holder {
@@ -85,7 +85,7 @@ contract MerkleErc1155Distributor is IMerkleErc1155Distributor, Ownable, ERC1155
         IERC1155(token).safeTransferFrom(address(this), msg.sender, tokenId, amount, "");
     }
 
-    function selfDestruct() public onlyOwner notLocked {
-        selfdestruct(msg.sender);
+    function selfDestruct() public payable onlyOwner notLocked {
+        selfdestruct(payable(msg.sender));
     }
 }
