@@ -25,6 +25,10 @@ if (PRIVATE_KEY) {
       accounts: [`0x${PRIVATE_TEST_KEY}`],
       gasPrice: 130000000000, // 13o gwei
     },
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: [`0x${PRIVATE_TEST_KEY}`]
+    },
     testnetbsc: {
       url: `https://data-seed-prebsc-1-s1.binance.org:8545/`,
       accounts: [`${PRIVATE_KEY}`]
@@ -69,6 +73,6 @@ module.exports = {
     }
   },
   etherscan: {
-    apiKey: process.env.BSCSCAN_KEY
+    apiKey: process.env.ETHERSCAN_KEY
   }
 };
